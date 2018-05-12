@@ -31,12 +31,15 @@ public class DemoApplication implements CommandLineRunner{
 	@Override
 	public void run(String... args) throws Exception {
 		Author sKing = new Author("Stephen", "King");
-//		authorRepository.save(sKing);
 		Set<Author> first = new HashSet<>();
 		first.add(sKing);
 		Category horror = new Category("horror");
-//		categoryRepository.save(horror);
 		Book book = new Book("Misery", "4235452", first, horror);
 		bookRepository.save(book);
+		Author nesbo = new Author("Jo", "Nesbo");
+		first.clear();
+		first.add(nesbo);
+		bookRepository.save(new Book("Pierwszy śnieg", "42423432", first, new Category("crime story")));
+//		bookRepository.save(new Book("Cujo", "424324", first, horror));
 	}
 }
