@@ -40,6 +40,10 @@ public class DemoApplication implements CommandLineRunner{
 		first.clear();
 		first.add(nesbo);
 		bookRepository.save(new Book("Pierwszy śnieg", "42423432", first, new Category("crime story")));
-//		bookRepository.save(new Book("Cujo", "424324", first, horror));
+		first.clear();
+		Author mus = new Author("Małgorzata", "Musierowicz");
+		first.add(mus);
+		Category mlodziez = new Category("Literatura młodzieżowa");
+		bookRepository.save(new Book("Ciotka zgryzotka", "42432443", first, mlodziez));
 	}
 }

@@ -10,10 +10,19 @@ import java.util.List;
 @Service
 public class AuthorService {
 
-    @Autowired
+
     private AuthorRepository authorRepository;
+
+    @Autowired //wstrzykiwanie przez konstruktor
+    public AuthorService(AuthorRepository authorRepository) {
+        this.authorRepository = authorRepository;
+    }
 
     public List<Author> getAuthors(){
         return authorRepository.findAll();
+    }
+
+    public Author save(Author author) {
+        return authorRepository.save(author);
     }
 }
