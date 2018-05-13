@@ -1,5 +1,6 @@
 package com.sda.spring.demo.controller;
 
+import com.sda.spring.demo.dto.UserDTO;
 import com.sda.spring.demo.model.Author;
 import com.sda.spring.demo.model.Book;
 import com.sda.spring.demo.model.Category;
@@ -81,5 +82,14 @@ public class Controller {
     @RequestMapping(value = "/users", method = GET)
     public List<User> showUserList(){
         return userService.getUsers();
+    }
+
+//    @RequestMapping(value = "user/{id}", method = GET)
+//    public ResponseEntity<UserDTO> getUserById(@PathVariable Long id){
+//        return ResponseEntity.status(HttpStatus.OK).body(userService.getUserById(id));
+//    }
+    @RequestMapping(value = "user/{id}", method = GET)
+    public UserDTO getUserById(@PathVariable Long id){
+        return userService.getUserById(id);
     }
 }

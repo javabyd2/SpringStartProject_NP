@@ -20,11 +20,15 @@ public class Book {
     @ManyToOne(cascade = CascadeType.MERGE)
     private Category category;
 
-    public Book(String title, String ibsn, Set<Author> authors, Category category) {
+    @ManyToOne
+    private Publisher publisher;
+
+    public Book(String title, String ibsn, Set<Author> authors, Category category, Publisher publisher) {
         this.title = title;
         this.ibsn = ibsn;
         this.authors = authors;
         this.category = category;
+        this.publisher = publisher;
     }
 
     public Book() {
@@ -68,5 +72,13 @@ public class Book {
 
     public void setCategory(Category category) {
         this.category = category;
+    }
+
+    public Publisher getPublisher() {
+        return publisher;
+    }
+
+    public void setPublisher(Publisher publisher) {
+        this.publisher = publisher;
     }
 }
