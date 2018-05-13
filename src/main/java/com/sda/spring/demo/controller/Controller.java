@@ -67,12 +67,12 @@ public class Controller {
         return ResponseEntity.status(HttpStatus.OK).body(bookService.getBookById(id));
     }
     @RequestMapping(value = "author/{id}", method = GET)
-    public Optional<Author> getAuthorById(@PathVariable Long id){
-        return authorService.getAuthorById(id);
+    public ResponseEntity<Author> getAuthorById(@PathVariable Long id){
+        return ResponseEntity.status(HttpStatus.OK).body(authorService.getAuthorById(id));
     }
     @RequestMapping(value = "category/{id}", method = GET)
-    public Optional<Category> getCategoryById(@PathVariable Long id){
-        return categoryService.getCategoryById(id);
+    public ResponseEntity<Category> getCategoryById(@PathVariable Long id){
+        return ResponseEntity.status(HttpStatus.OK).body(categoryService.getCategoryById(id));
     }
     @RequestMapping(value = "/user", method = POST)
     public User addUser(@RequestBody User user){

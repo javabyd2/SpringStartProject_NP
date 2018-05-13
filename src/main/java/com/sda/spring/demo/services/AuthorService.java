@@ -1,5 +1,6 @@
 package com.sda.spring.demo.services;
 
+import com.sda.spring.demo.exception.AuthorNotFoundException;
 import com.sda.spring.demo.model.Author;
 import com.sda.spring.demo.repository.AuthorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +28,10 @@ public class AuthorService {
         return authorRepository.save(author);
     }
 
-    public Optional<Author> getAuthorById(Long id) {
-        return authorRepository.findById(id);
+    public Author getAuthorById(Long id) {
+        Author author = authorRepository.findById(id).orElseThrow(
+                () -> new AuthorNotFoundException(id)
+        );
+        return author;
     }
 }
