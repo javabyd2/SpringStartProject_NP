@@ -30,20 +30,20 @@ public class DemoApplication implements CommandLineRunner{
 
 	@Override
 	public void run(String... args) throws Exception {
-		Author sKing = new Author("Stephen", "King");
-		Set<Author> first = new HashSet<>();
-		first.add(sKing);
-		Category horror = new Category("horror");
-		Book book = new Book("Misery", "4235452", first, horror);
-		bookRepository.save(book);
-		Author nesbo = new Author("Jo", "Nesbo");
-		first.clear();
-		first.add(nesbo);
-		bookRepository.save(new Book("Pierwszy śnieg", "42423432", first, new Category("crime story")));
-		first.clear();
-		Author mus = new Author("Małgorzata", "Musierowicz");
-		first.add(mus);
-		Category mlodziez = new Category("Literatura młodzieżowa");
-		bookRepository.save(new Book("Ciotka zgryzotka", "42432443", first, mlodziez));
+//		Author sKing = new Author("Stephen", "King");
+//		Set<Author> first = new HashSet<>();
+//		first.add(sKing);
+//		Category horror = new Category("horror");
+//		Book book = new Book("Misery", "4235452", first, horror);
+//		bookRepository.save(book);
+//		Author nesbo = new Author("Jo", "Nesbo");
+//		first.clear();
+//		first.add(nesbo);
+//		bookRepository.save(new Book("Pierwszy śnieg", "42423432", first, new Category("crime story")));
+//		first.clear();
+//		Author mus = new Author("Małgorzata", "Musierowicz");
+//		first.add(mus);
+//		Category mlodziez = new Category("Literatura młodzieżowa");
+//		bookRepository.save(new Book("Ciotka zgryzotka", "42432443", first, mlodziez));
 	}
 }

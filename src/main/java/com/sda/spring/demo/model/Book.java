@@ -1,7 +1,5 @@
 package com.sda.spring.demo.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
 import javax.persistence.*;
 import java.util.Set;
 
@@ -13,13 +11,13 @@ public class Book {
 
     private String title;
     private String ibsn;
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(cascade = CascadeType.MERGE)
     @JoinTable(joinColumns =
     @JoinColumn(name = "book_id", referencedColumnName = "id"),
             inverseJoinColumns =
             @JoinColumn(name = "author_id", referencedColumnName = "id"))
     private Set<Author> authors;
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.MERGE)
     private Category category;
 
     public Book(String title, String ibsn, Set<Author> authors, Category category) {
