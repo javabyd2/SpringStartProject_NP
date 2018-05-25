@@ -9,6 +9,7 @@ import java.util.Set;
 @Entity
 public class Publisher {
 
+    //TODO: Service i metody, exception
     @Id
     @GeneratedValue
     private Long id;
