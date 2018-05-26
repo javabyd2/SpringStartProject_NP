@@ -2,24 +2,39 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
+<div class="jumbotron">
 <h2>Lista książek</h2>
-<table border="1">
-    <tr>
-        <th>Tytuł</th>
-        <th>Autor</th>
-        <th>Kategoria</th>
-    </tr>
-    <tr th:each="book : ${booksList}">
-        <td th:text="${book.getTitle()}"></td>
-        <td >
-            <p th:each="author:${book.getAuthors()}" th:text="${author.getName() + ' ' + author.getLastName()} "></p>
-        </td>
-        <td th:text="${book.getCategory().getName()}"></td>
-    </tr>
-</table>
+</div>
+<div class="row">
+    <div class="col">
+        <table class="table">
+            <thead class="thead-light">
+            <tr>
+                <th>Tytuł</th>
+                <th>Autor</th>
+                <th>Kategoria</th>
+            </tr>
+            </thead>
+            <tr th:each="book : ${booksList}">
+                <td th:text="${book.getTitle()}"></td>
+                <td>
+                    <p th:each="author:${book.getAuthors()}"
+                       th:text="${author.getName() + ' ' + author.getLastName()} "></p>
+                </td>
+                <td th:text="${book.getCategory().getName()}"></td>
+            </tr>
+        </table>
+    </div>
+    <!--<div class="col"></div>-->
+</div>
 </body>
 </html>
