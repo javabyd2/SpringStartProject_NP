@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h2>Lista użytkowników</h2>
+<table border="1">
+    <tr>
+        <th>Nazwa użytkownika</th>
+        <th>Nazwisko</th>
+    </tr>
+    <tr th:each="user : ${usersList}">
+        <td th:text="${user.getNick()}"></td>
+        <td th:text="${user.getLastname()}"></td>
+    </tr>
+</table>
+</body>
+</html>
