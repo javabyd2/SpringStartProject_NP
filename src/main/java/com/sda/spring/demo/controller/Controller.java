@@ -1,6 +1,7 @@
 package com.sda.spring.demo.controller;
 
 import com.sda.spring.demo.dto.UserDTO;
+import com.sda.spring.demo.dto.UserDetailsDTO;
 import com.sda.spring.demo.model.*;
 import com.sda.spring.demo.services.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -90,7 +91,7 @@ public class Controller {
         return userService.save(user);
     }
     @RequestMapping(value = "/users", method = GET)
-    public List<User> showUserList(){
+    public List<UserDetailsDTO> showUserList(){
         return userService.getUsers();
     }
 
