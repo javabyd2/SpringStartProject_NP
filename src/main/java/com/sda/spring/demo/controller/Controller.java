@@ -36,6 +36,7 @@ public class Controller {
     }
 
     //krotsza atnotacja
+    @CrossOrigin(value = "http://localhost:3000")
     @GetMapping("/books")
     public List<Book> showBooklist(){
         return bookService.getBooks();

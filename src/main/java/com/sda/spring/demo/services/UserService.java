@@ -2,11 +2,15 @@ package com.sda.spring.demo.services;
 
 import com.sda.spring.demo.dto.UserDTO;
 import com.sda.spring.demo.dto.UserDetailsDTO;
+import com.sda.spring.demo.model.Role;
 import com.sda.spring.demo.model.User;
+import com.sda.spring.demo.repository.RoleRepository;
 import com.sda.spring.demo.repository.UserRepository;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCrypt;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.lang.reflect.Type;
@@ -17,10 +21,14 @@ import java.util.Optional;
 public class UserService {
 
     private UserRepository userRepository;
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
+    private RoleRepository roleRepository;
 
     @Autowired
-    public UserService(UserRepository userRepository) {
+    public UserService(UserRepository userRepository, BCryptPasswordEncoder bCryptPasswordEncoder, RoleRepository roleRepository) {
         this.userRepository = userRepository;
+        this.bCryptPasswordEncoder = bCryptPasswordEncoder;
+        this.roleRepository = roleRepository;
     }
 
     public User save(User user) {
@@ -43,5 +51,17 @@ public class UserService {
         UserDTO userDTO = modelMapper.map(user.get(),UserDTO.class);
 
         return userDTO;
+    }
+
+    public User findByAddress(String email){
+        return userRepository.findByAddress(email);
+    }
+
+    public void saveUser(User user) {
+        user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
+
+        Role role = roleRepository.findByName("admin");
+        user.setRole(role);
+        userRepository.save(user);
     }
 }

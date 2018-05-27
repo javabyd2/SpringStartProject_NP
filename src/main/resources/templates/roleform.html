@@ -2,16 +2,25 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
-<h2>Dodawanie nowej roli</h2>
-<p th:text="${message}"></p>
-<form th:action="@{/web/addrole}" method="post" th:object="${role}">
-    <p>Nazwa</p>
-    <input type="text" th:field="*{name}">
-    <input type="submit" value="Dodaj">
-</form>
+<div class="container">
+    <h2>Dodawanie nowej roli</h2>
+    <p th:text="${message}"></p>
+    <form th:action="@{/web/addrole}" method="post" th:object="${role}">
+        <div class="form-group">
+            <label for="name">Nazwa:</label>
+            <input type="text" class="form-control" id="name" th:field="*{name}">
+        </div>
+        <button type="submit" class="btn btn-primary">Dodaj</button>
+    </form>
+</div>
 </body>
 </html>
